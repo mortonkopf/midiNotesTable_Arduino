@@ -1,0 +1,46 @@
+//a simple sketch showing how to call the note value for a scale, using a single scale octave, 
+
+const int majorSize          = 7,
+          harmonicMinorSize  = 7,
+          naturalMinorSize   = 7,
+          pentatonicSize     = 5,
+          bluesSize          = 6;
+          
+const int majorSteps[majorSize]                  = { 0, 2, 4, 5, 7, 9, 11 },
+          harmonicMinorSteps[harmonicMinorSize]  = { 0, 2, 3, 5, 7, 8, 11 },
+          naturalMinorSteps[naturalMinorSize]    = { 0, 2, 3, 5, 7, 8, 10 },
+          pentatonicSteps[pentatonicSize]        = { 0, 2, 4, 7, 9 },
+          bluesSteps[bluesSize]                  = { 0, 3, 5, 6, 7, 10 };
+
+//majorSteps[0]+(12*octave)+24);} //=starts at middle C
+
+int octaves    = 8;//only using positive nos in this test
+
+String noteValues[] ={
+"C -2","C#/Db  -2","D  -2","D#/Eb -2","E  -2","F  -2","F#/Gb -2","G -2","G#/Ab -2","A  -2","A#/Bb -2","B -2",    //0-11
+"C -1","C#/Db  -1","D  -1","D#/Eb -1","E  -1","F  -1","F#/Gb -1","G -1","G#/Ab -1","A  -1","A#/Bb -1","B -1",    //12-23
+"C 0", "C#/Db  0", "D  0", "D#/Eb 0", "E  0", "F  0", "F#/Gb  0", "G  0","G#/Ab  0", "A  0", "A#/Bb  0", "B  0", //24-35
+"C 1", "C#/Db  1", "D  1", "D#/Eb 1", "E  1", "F  1", "F#/Gb  1", "G  1","G#/Ab  1", "A  1", "A#/Bb  1", "B  1", //36-47
+"C 2", "C#/Db  2", "D  2", "D#/Eb 2", "E  2", "F  2", "F#/Gb  2", "G  2","G#/Ab  2", "A  2", "A#/Bb  2", "B  2", //48-59
+"C 3", "C#/Db  3", "D  3", "D#/Eb 3", "E  3", "F  3", "F#/Gb  3", "G  3","G#/Ab  3", "A  3", "A#/Bb  3", "B  3", //60-71
+"C 4", "C#/Db  4", "D  4", "D#/Eb 4", "E  4", "F  4", "F#/Gb  4", "G  4","G#/Ab  4", "A  4", "A#/Bb  4", "B  4", //72-83
+"C 4", "C#/Db  4", "D  4", "D#/Eb 4", "E  4", "F  4", "F#/Gb  4", "G  4","G#/Ab  4", "A  4", "A#/Bb  4", "B  4", //84-95
+"C 5", "C#/Db  5", "D  5", "D#/Eb 5", "E  5", "F  5", "F#/Gb  5", "G  5","G#/Ab  5", "A  5", "A#/Bb  5", "B  5", //96-107
+"C 6", "C#/Db  6", "D  6", "D#/Eb 6", "E  6", "F  6", "F#/Gb  6", "G  6","G#/Ab  6", "A  6", "A#/Bb  6", "B  6", //108-119
+"C 7", "C#/Db  7", "D  7", "D#/Eb 7", "E  7", "F  7", "F#/Gb  7", "G  7","G#/Ab  7", "A  7", "A#/Bb  7", "B  7", //120
+};
+
+void setup() {
+Serial.begin(38400);
+}
+
+void loop() {
+  for (int octave = 0; octave < octaves; octave++) {  
+    for (int x=0;x<majorSize;x++){
+    Serial.print("midi note value = ");
+    Serial.print(majorSteps[x]+(12*octave)+24);
+    Serial.print("  scale note is  ");
+    Serial.println(noteValues[(majorSteps[x]+(12*octave)+24)]);}
+  }
+  
+}
